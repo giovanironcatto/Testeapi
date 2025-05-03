@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carteira CIPTEA - Visualização</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+    }
+
+    header {
+      background-color: #0050a0;
+      color: white;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    header img {
+      height: 50px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      background: white;
+      padding: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .card {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card-face {
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      padding: 1rem;
+      width: 280px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+    }
+
+    .card-face img.photo {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      color: #0050a0;
+      font-weight: bold;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .info {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .footer {
+      font-size: 0.75rem;
+      color: #c00;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .qr {
+      display: block;
+      margin: 0.5rem auto;
+      width: 120px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="https://ciptea.sp.gov.br/wp-content/themes/ciptea/img/logo_ciptea.png" alt="Logo CIPTEA">
+    <img src="https://www.pessoacomdeficiencia.sp.gov.br/wp-content/themes/acessibilidade/img/logo_governo_sp.png" alt="Governo de SP">
+  </header>
+
+  <div class="container">
+    <h1 style="color: #0050a0; text-align: center;">Carteira de Identificação da Pessoa com Transtorno do Espectro Autista</h1>
+
+    <div class="card">
+      <!-- Frente -->
+      <div class="card-face">
+        <img src="/mnt/data/1000054057.png" alt="Foto" class="photo">
+        <div class="info">
+          <strong>Nome:</strong> Davi de Oliveira<br>
+          <strong>CID:</strong> 6A02.3<br>
+          <strong>Tipo sanguíneo:</strong> O+<br>
+          <strong>Validade:</strong> 12/04/2028<br>
+        </div>
+        <div class="footer">
+          ATENDIMENTO PREFERENCIAL<br>
+          LEI FEDERAL Nº 13.977/2020
+        </div>
+      </div>
+
+      <!-- Verso -->
+      <div class="card-face">
+        <div class="info">
+          <strong>Nome:</strong> Davi de Oliveira<br>
+          <strong>CPF:</strong> 123.456.789-00<br>
+          <strong>Data de nascimento:</strong> 08/12/2011<br>
+          <strong>Endereço:</strong> Rua da Esperança, Nº 111 - São Paulo - SP<br>
+        </div>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data=ciptea-sp-davi" alt="QR Code" class="qr">
+        <div class="section-title">Dados do Responsável / Cuidador</div>
+        <div class="info">
+          <strong>Nome:</strong> Julliene de Oliveira<br>
+          <strong>CPF:</strong> 123.456.780-00<br>
+          <strong>Endereço:</strong> Rua da Esperança, Nº 111 - São Paulo - SP<br>
+        </div>
+        <div class="footer">
+          TELEFONE DE EMERGÊNCIA<br>
+          (00) 00000-0000
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
