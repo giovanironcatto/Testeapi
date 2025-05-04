@@ -1,136 +1,237 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Carteira CIPTEA - Visualização</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Roboto', sans-serif;
-      background-color: #f7f7f7;
+      background-color: #f2f2f2;
       color: #333;
+      font-size: 16px;
+      background-image: url('img/simbolo_ciptea.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 300px;
+      background-attachment: fixed;
+      opacity: 0.98;
     }
-
     header {
-      background-color: #0050a0;
+      background-color: #002f6c;
       color: white;
-      padding: 1rem;
+      padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      text-align: center;
     }
-
-    header img {
-      height: 50px;
+    header img { height: 50px; margin: 0.5rem 1rem; }
+    .header-title {
+      flex: 1 1 100%;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-top: 0.5rem;
     }
-
     .container {
-      max-width: 1000px;
+      max-width: 960px;
       margin: 2rem auto;
       background: white;
       padding: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      border-radius: 8px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
-
+    h1 {
+      color: #002f6c;
+      text-align: center;
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .preferencial {
+      text-align: center;
+      font-weight: bold;
+      color: red;
+      margin: 1.5rem 0;
+      font-size: 1.1rem;
+    }
     .card {
       display: flex;
       gap: 2rem;
       flex-wrap: wrap;
       justify-content: center;
     }
-
     .card-face {
-      background: white;
-      border: 1px solid #ccc;
-      border-radius: 12px;
-      padding: 1rem;
-      width: 280px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      background-color: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 1.5rem;
+      width: 100%;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      position: relative;
     }
-
     .card-face img.photo {
       width: 100%;
       height: auto;
       border-radius: 8px;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
-
-    .section-title {
-      color: #0050a0;
-      font-weight: bold;
-      margin: 1rem 0 0.5rem;
-    }
-
     .info {
       font-size: 0.95rem;
-      line-height: 1.4;
+      line-height: 1.5;
+      margin-bottom: 1rem;
     }
-
-    .footer {
-      font-size: 0.75rem;
-      color: #c00;
+    .section-title {
+      font-weight: bold;
+      color: #0050a0;
       margin-top: 1rem;
-      text-align: center;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
     }
-
-    .qr {
-      display: block;
-      margin: 0.5rem auto;
-      width: 120px;
+    .footer {
+      font-size: 0.9rem;
+      color: #000;
+      text-align: center;
+      margin-top: 1rem;
+      border-top: 1px dashed #ccc;
+      padding-top: 0.5rem;
+    }
+    .emergency {
+      font-weight: bold;
+      color: red;
+    }
+    .btn-print, .btn-access {
+      display: inline-block;
+      margin: 1rem 0.5rem;
+      background-color: #0050a0;
+      color: white;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .btn-print:hover, .btn-access:hover {
+      background-color: #003f80;
+    }
+    .auth-code {
+      background-color: #f0f0f0;
+      padding: 0.5rem;
+      font-family: monospace;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      text-align: center;
+      margin: 1rem 0;
+    }
+    footer.site-footer {
+      background: #002f6c;
+      color: white;
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 1rem;
+      margin-top: 3rem;
+    }
+    .link-validacao {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: center; }
+      .card { flex-direction: column; align-items: center; }
+      .card-face { width: 90%; }
+    }
+    @media print {
+      .btn-print, .btn-access, header, footer.site-footer, .link-validacao {
+        display: none;
+      }
+      .container {
+        box-shadow: none;
+        border: none;
+        margin: 0;
+        padding: 0;
+      }
+      body { background: white; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="https://ciptea.sp.gov.br/wp-content/themes/ciptea/img/logo_ciptea.png" alt="Logo CIPTEA">
-    <img src="https://www.pessoacomdeficiencia.sp.gov.br/wp-content/themes/acessibilidade/img/logo_governo_sp.png" alt="Governo de SP">
+  <header role="banner">
+    <img src="img/logo_ciptea.png" alt="Logo CIPTEA" />
+    <div class="header-title">Secretaria dos Direitos da Pessoa com Deficiência</div>
+    <img src="img/logo_governo_sp.png" alt="Logo Governo de São Paulo" />
   </header>
-
-  <div class="container">
-    <h1 style="color: #0050a0; text-align: center;">Carteira de Identificação da Pessoa com Transtorno do Espectro Autista</h1>
-
-    <div class="card">
-      <!-- Frente -->
-      <div class="card-face">
-        <img src="/mnt/data/1000054057.png" alt="Foto" class="photo">
+  <main class="container" role="main">
+    <h1>Carteira de Identificação da Pessoa com Transtorno do Espectro Autista</h1>
+    <div class="preferencial">
+      ATENDIMENTO PREFERENCIAL<br />
+      <a href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2020/lei/l13977.htm" target="_blank" style="color: red; text-decoration: underline;">LEI FEDERAL Nº 13.977/2020</a>
+    </div>
+    <div class="auth-code"><strong>Código de autenticação:</strong> SP-123456789-CIPTEA</div>
+    <section class="card" aria-label="Carteira">
+      <div class="card-face" aria-label="Informações da Carteira">
+        <img src="img/foto_pessoa.png" alt="Foto da pessoa" class="photo" />
         <div class="info">
-          <strong>Nome:</strong> Davi de Oliveira<br>
-          <strong>CID:</strong> 6A02.3<br>
-          <strong>Tipo sanguíneo:</strong> O+<br>
-          <strong>Validade:</strong> 12/04/2028<br>
+          <strong>Nome:</strong> Davi de Oliveira<br />
+          <strong>CPF:</strong> 123.456.789-00<br />
+          <strong>Data de nascimento:</strong> 08/12/2011<br />
+          <strong>CID:</strong> 6A02.3<br />
+          <strong>Tipo sanguíneo:</strong> O+<br />
+          <strong>Endereço:</strong> Rua da Esperança, Nº 111 - São Paulo - SP<br />
+          <strong>Validade:</strong> 12/04/2030
         </div>
-        <div class="footer">
-          ATENDIMENTO PREFERENCIAL<br>
-          LEI FEDERAL Nº 13.977/2020
-        </div>
-      </div>
-
-      <!-- Verso -->
-      <div class="card-face">
-        <div class="info">
-          <strong>Nome:</strong> Davi de Oliveira<br>
-          <strong>CPF:</strong> 123.456.789-00<br>
-          <strong>Data de nascimento:</strong> 08/12/2011<br>
-          <strong>Endereço:</strong> Rua da Esperança, Nº 111 - São Paulo - SP<br>
-        </div>
-        <img src="https://api.qrserver.com/v1/create-qr-code/?data=ciptea-sp-davi" alt="QR Code" class="qr">
         <div class="section-title">Dados do Responsável / Cuidador</div>
         <div class="info">
-          <strong>Nome:</strong> Julliene de Oliveira<br>
-          <strong>CPF:</strong> 123.456.780-00<br>
-          <strong>Endereço:</strong> Rua da Esperança, Nº 111 - São Paulo - SP<br>
+          <strong>Nome:</strong> Julliene de Oliveira<br />
+          <strong>CPF:</strong> 123.456.780-00<br />
+          <strong>Endereço:</strong> Rua da Esperança, Nº 111 - São Paulo - SP
         </div>
+        <hr />
         <div class="footer">
-          TELEFONE DE EMERGÊNCIA<br>
-          (00) 00000-0000
+          TELEFONE DE EMERGÊNCIA<br />
+          <span class="emergency">(00) 00000-0000</span>
         </div>
       </div>
+    </section>
+    <div class="link-validacao">
+      <a href="#" style="color: #0050a0; text-decoration: underline;">Verificar autenticidade</a><br />
+      <p><strong>Emitido em:</strong> <span id="emitido-em"></span></p>
     </div>
-  </div>
+    <div style="text-align: center;">
+      <button class="btn-print" onclick="window.print()" aria-label="Imprimir ou salvar em PDF">Imprimir ou Salvar PDF</button>
+      <button class="btn-access" onclick="adjustFontSize(1)" aria-label="Aumentar fonte">A+</button>
+      <button class="btn-access" onclick="adjustFontSize(-1)" aria-label="Diminuir fonte">A-</button>
+      <button class="btn-access" onclick="toggleContrast()" aria-label="Ativar alto contraste">Contraste</button>
+    </div>
+  </main>
+  <footer class="site-footer" role="contentinfo">
+    © 2025 Governo do Estado de São Paulo - Todos os direitos reservados.<br />
+    Secretaria dos Direitos da Pessoa com Deficiência<br />
+    <a href="https://www.saopaulo.sp.gov.br/politica-de-privacidade/" style="color: #fff; text-decoration: underline;">Política de Privacidade</a> |
+    <a href="https://www.saopaulo.sp.gov.br/acessibilidade/" style="color: #fff; text-decoration: underline;">Acessibilidade</a> |
+    <a href="https://www.saopaulo.sp.gov.br/fale-conosco/" style="color: #fff; text-decoration: underline;">Contato</a>
+  </footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const now = new Date().toLocaleString("pt-BR");
+      document.getElementById("emitido-em").innerText = now;
+    });
+
+    let currentFontSize = 16;
+    function adjustFontSize(change) {
+      currentFontSize += change;
+      if (currentFontSize < 10) currentFontSize = 10;
+      document.body.style.fontSize = currentFontSize + "px";
+    }
+
+    function toggleContrast() {
+      document.body.classList.toggle("high-contrast");
+    }
+  </script>
 </body>
 </html>
